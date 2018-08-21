@@ -227,7 +227,7 @@ class Board:
 
 	def realBoard(self): # returns only the "real" board, i.e. classical marks in any fields
 		bo = [' '] * 10
-		num = [' '] * 10
+		num = [0] * 10
 		for f in self.fields:
 			for m in f.contents:
 				if isinstance(m, ClassicalMark):		

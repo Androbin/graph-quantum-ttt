@@ -4,7 +4,7 @@ def getGameMode():
 	print("Do you want to play against the computer or against another player? Enter (c/p)")
 	inp = ''
 	while inp not in ['c', 'C', 'p', 'P']:
-		inp = raw_input()
+		inp = input()
 	if inp == 'c' or inp == 'C':
 		return 'pvc'
 	else:
@@ -21,13 +21,13 @@ def whoGoesFirst():
 def playAgain():
 	# This function returns True if the player wants to play again, otherwise it returns False.
 	print('Do you want to play again? (yes or no)')
-	return raw_input().lower().startswith('y')
+	return input().lower().startswith('y')
 
 def getNumRecursions():
 	val = ""
 	while val not in "1 2 3 4 5 6 7 8 9 10".split(" "):
 		print("How many recursions? (1-10)")
-		val = raw_input()
+		val = input()
 	return int(val)
 
 def getPlayerCollapse(board, lastMark):
@@ -36,7 +36,7 @@ def getPlayerCollapse(board, lastMark):
     choice = None
     while (not choice or choice not in [lastMark.pos, lastMark.otherpos]):
       print('What choice do you want to make? ({0}, {1})'.format(lastMark.pos, lastMark.otherpos))
-      choice = int(raw_input())
+      choice = int(input())
     if choice == lastMark.pos:
       return choice, lastMark.otherpos
     else:
@@ -48,9 +48,9 @@ def getPlayerMove(board):
 	move2 = ' '
 	while ((move not in '1 2 3 4 5 6 7 8 9'.split() or move2 not in '1 2 3 4 5 6 7 8 9'.split()) and move == move2) or not board.isSpaceFree(int(move)) or not board.isSpaceFree(int(move2)):
 		print('What is your next move? (1-9)')
-		move = raw_input()
+		move = input()
 		print('Second field? (1-9)')
-		move2 = raw_input()
+		move2 = input()
 	return int(move), int(move2)
 
 def getComputerMove_Random(board):

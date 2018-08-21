@@ -51,7 +51,7 @@ while(True): # loop for games
 					cp = CollapsePars([lastMark.letter, lastMark.num, col[0], col[1]])
 					turnboard.collapse(cp)
 					turnboard.printBoard()
-	  
+
 			# look at winning conditions:
 			p1won, p1lms = turnboard.hasWon(playerLetter)
 			p2won, p2lms = turnboard.hasWon(player2letter)
@@ -70,7 +70,7 @@ while(True): # loop for games
 						else:
 							print("The computer (" + player2letter + ") has won the game!")
 						
-						break	   			
+						break
 				else:
 					print("\n")
 					turnboard.printBoard()
@@ -86,19 +86,19 @@ while(True): # loop for games
 				break
 			else:
 				if turnboard.isFull():
-				  print("\n")
-				  turnboard.printBoard()
-				  print("The game is a tie!")
-				  break
+					print("\n")
+					turnboard.printBoard()
+					print("The game is a tie!")
+					break
 		
 			turn = 2
-		   	# if the game hasn't ended, make a move
+			# if the game hasn't ended, make a move
 			pos1, pos2 = getPlayerMove(turnboard)
 			sp = SpookyMarkPars([playerLetter, numMark, pos1, pos2])
-		   
+
 			lastMark = turnboard.addSpookyMark(sp)
 			#print("How many recursions?")
-			#rec = int(raw_input())
+			#rec = int(input())
 
 			mc = Movecode(cp, sp)		# this is the summary of all the player's decisions leading to turnboard, the local copy needed for visualization
 			############## make the change in board by going over the game tree using mc
@@ -112,7 +112,7 @@ while(True): # loop for games
 					node.children[num] = newNode"""
 			node = newNode	# reset pointer to current node 
 			numMark += 1
-		else:      	
+		else:
 			board = node.board
 			if mode == "pvp":
 				print("It's player 2's turn. Place your mark (" + player2letter + ")")
@@ -132,7 +132,7 @@ while(True): # loop for games
 						cp = CollapsePars([lastMark.letter, lastMark.num, col[0], col[1]])
 						turnboard.collapse(cp)
 						turnboard.printBoard()
-		  
+
 				# look at winning conditions:
 				p1won, p1lms = turnboard.hasWon(playerLetter)
 				p2won, p2lms = turnboard.hasWon(player2letter)
@@ -160,18 +160,18 @@ while(True): # loop for games
 					break
 				else:
 					if turnboard.isFull():
-					  print("\n")
-					  turnboard.printBoard()
-					  print("The game is a tie!")
-					  break
+						print("\n")
+						turnboard.printBoard()
+						print("The game is a tie!")
+						break
 		
 				turn = 1
-			   	# if the game hasn't ended, make a move
+				# if the game hasn't ended, make a move
 				pos1, pos2 = getPlayerMove(turnboard)
 				sp = SpookyMarkPars([player2letter, numMark, pos1, pos2])
-		   
+
 				lastMark = turnboard.addSpookyMark(sp)
-			   	mc = Movecode(cp, sp)		# this is the summary of all the player's decisions leading to turnboard, the local copy needed for visualization
+				mc = Movecode(cp, sp)		# this is the summary of all the player's decisions leading to turnboard, the local copy needed for visualization
 				############## make the change in board by going over the game tree using mc
 				newNode = GameNode(turnboard, node, mc, playerLetter, player2letter)
 				for num, c in enumerate(node.children):
